@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap');
+
+*,
+body,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Quantico', sans-serif;
+}
+
+.header {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.header h1 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.header h2 {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: red;
+}
+
+.header p {
+  width: 80%;
+  font-size: 0.5rem;
+}
+
+/*---
+CARD
+---*/
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}
+
+.cardImg img {
+  width: 10rem;
+}
+
+.cardName {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.cardWanted {
+  font-size: 0.5rem;
+  text-align: center;
+  font-weight: 400;
+}
