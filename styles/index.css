@@ -9,6 +9,10 @@ html {
   font-family: 'Quantico', sans-serif;
 }
 
+/*---
+HEADER
+---*/
+
 .header {
   max-width: 100%;
   display: flex;
@@ -36,6 +40,16 @@ html {
 .header p {
   width: 80%;
   font-size: 0.5rem;
+}
+
+/*---
+PAGINATION
+---*/
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 /*---

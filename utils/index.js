@@ -1,4 +1,10 @@
+const paginationP = document.getElementById('pageNr');
+const lastPageBtn = document.getElementById('lastPageBtn');
+const nextPageBtn = document.getElementById('nextPageBtn');
+const wrapper = document.getElementById('cardsWrapper');
+
 let nr = 1;
+let totalPages;
 let ok;
 
 const createElements = (
@@ -7,7 +13,6 @@ const createElements = (
   wantedText,
   descText
 ) => {
-  const wrapper = document.getElementById('cardsWrapper');
   wrapper.innerHTML += `
         <div class="card">
           <div class="cardImg">
@@ -20,11 +25,13 @@ const createElements = (
             <h2 class="cardWanted" style="display:${
               ok ? 'none' : 'block'
             }">${
-    wantedText ? `Wanted for: ${wantedText}` : (ok = true)
+    wantedText ? wantedText : 'Wanted motives not provided'
   }</h2>
             <p class="cardDesc" style="display:${
               ok ? 'none' : 'block'
-            }>${descText ? descText : (ok = true)}</p>
+            }>${
+    descText ? descText : 'Description not provided'
+  }</p>
           </div>
         </div>
   `;
@@ -32,7 +39,6 @@ const createElements = (
 
 const getData = async (pageNr) => {
   try {
-    // console.log(pageNr);
     const url = new URL(
       `https://api.fbi.gov/wanted/v1/list?page=${pageNr}`
     );
@@ -44,37 +50,40 @@ const getData = async (pageNr) => {
   }
 };
 
-const displayData = async () => {
+const displayData = async (pageNr) => {
   try {
-    let data = await getData(nr);
-    console.log(data);
-    // if (data === undefined) {
-    //   console.log('undefined');
-    //   return;
-    // } else {
+    let data = await getData(pageNr);
+
+    totalPages = await data.total;
+    paginationP.textContent = `You are on page ${pageNr} out of ${totalPages} `;
+
     for (let obj of data.items) {
-      // for (let i = 0; i < data.items.length; i++) {
-      //   let obj = data.items[i];
-      // if (
-      //   obj.nationality === 'Romanian' ||
-      //   obj.place_of_birth === 'Romania'
-      // ) {
-      //   console.log(obj.nationality);
       createElements(
         await obj.images[0].thumb,
         await obj.title,
         await obj.description,
         await obj.caution
       );
-      //}
     }
-    // nr++;
-    // console.log(nr);
-    // displayData();
-    //}
   } catch (err) {
     console.error(err);
   }
 };
 
-displayData();
+displayData(nr);
+
+lastPageBtn.addEventListener('click', () => {
+  if (nr != 1) {
+    nr--;
+    wrapper.innerHTML = '';
+    displayData(nr);
+  }
+});
+
+nextPageBtn.addEventListener('click', () => {
+  if (nr < totalPages) {
+    nr++;
+    wrapper.innerHTML = '';
+    displayData(nr);
+  }
+});
