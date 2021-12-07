@@ -32,9 +32,27 @@
       <div class="paginationButtons">
         <button id="lastPageBtn">Last page</button>
         <button id="nextPageBtn">Next page</button>
+        <button id="filterButton">Filter options</button>
+        <div id="filterWrapper" class="filterWrapper">
+          <ul
+            class="filterButtonDropdown"
+            id="filterButtonDropdown"
+          >
+            Filter by sex:
+            <li id="filterMale">Male</li>
+            <li id="filterFemale">Female</li>
+            Filter by race:
+            <li id="filterWhite">White</li>
+            <li id="filterBlack">Black</li>
+            <li id="filterHispanic">Hispanic</li>
+            <li id="filterAsian">Asian</li>
+          </ul>
+        </div>
       </div>
       <div class="paginationText">
+        <p id="filterText"></p>
         <p id="pageNr"></p>
+
         <p>There are 20 individuals shown per page.</p>
         <p>Click on the photo for more information.</p>
       </div>

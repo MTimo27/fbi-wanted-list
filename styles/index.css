@@ -89,7 +89,8 @@ PAGINATION
   padding-bottom: 1em;
 }
 
-.paginationButtons button {
+.paginationButtons button,
+button {
   font-size: 0.8rem;
   padding: 0.5em;
   background-color: #003980;
@@ -101,7 +102,8 @@ PAGINATION
 }
 
 @media only screen and (min-width: 600px) {
-  .paginationButtons button {
+  .paginationButtons button,
+  button {
     font-size: 1rem;
   }
 }
@@ -114,6 +116,33 @@ PAGINATION
   .paginationText {
     font-size: 1rem;
   }
+}
+
+/*---
+FILTER
+---*/
+
+.filterWrapper {
+  display: none;
+  padding: 1em 2em 1em 2em;
+}
+
+.filterButtonDropdown {
+  margin: 0 auto;
+  padding: 1em 2em 1em 2em;
+  background-color: #003980;
+  color: #fff;
+  text-align: center;
+  width: fit-content;
+}
+
+.filterButtonDropdown li {
+  list-style-type: none;
+  background-color: #fff;
+  color: #003980;
+  cursor: pointer;
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
 }
 
 /*---

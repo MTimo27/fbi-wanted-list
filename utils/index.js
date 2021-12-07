@@ -2,10 +2,26 @@ const paginationP = document.getElementById('pageNr');
 const lastPageBtn = document.getElementById('lastPageBtn');
 const nextPageBtn = document.getElementById('nextPageBtn');
 const wrapper = document.getElementById('cardsWrapper');
+const filterButton =
+  document.getElementById('filterButton');
+const filterWrapper =
+  document.getElementById('filterWrapper');
+const filterMale = document.getElementById('filterMale');
+const filterFemale =
+  document.getElementById('filterFemale');
+const filterWhite = document.getElementById('filterWhite');
+const filterBlack = document.getElementById('filterBlack');
+const filterHispanic = document.getElementById(
+  'filterHispanic'
+);
+const filterAsian = document.getElementById('filterAsian');
+const filterText = document.getElementById('filterText');
 
-let nr = 1;
-let totalPages;
-let ok;
+let nr = 1,
+  totalPages,
+  race = '',
+  sex = '',
+  ok = 1;
 
 const createElements = (imgSrc, name, pdfLink) => {
   wrapper.innerHTML += `
@@ -29,8 +45,13 @@ const createElements = (imgSrc, name, pdfLink) => {
 const getData = async (pageNr) => {
   try {
     const url = new URL(
-      `https://api.fbi.gov/wanted/v1/list?page=${pageNr}`
+      `https://api.fbi.gov/wanted/v1/list`
     );
+    url.search = new URLSearchParams({
+      page: pageNr,
+      race: race,
+      sex: sex,
+    });
     const res = await fetch(url);
     const data = await res.json();
     return data;
@@ -75,3 +96,32 @@ nextPageBtn.addEventListener('click', () => {
     displayData(nr);
   }
 });
+
+filterButton.addEventListener('click', () => {
+  if (ok === 0) {
+    filterWrapper.style.display = 'none';
+    ok = 1;
+  } else {
+    filterWrapper.style.display = 'block';
+    ok = 0;
+  }
+});
+
+filterMale.addEventListener('click', () => {
+  sex = 'male';
+  nr = 1;
+  wrapper.innerHTML = '';
+  filterWrapper.style.display = 'none';
+  filterText.textContent = 'FILTERED BY SEX: MALES';
+  displayData(nr);
+});
+
+filterFemale.addEventListener('click', () => {});
+
+filterWhite.addEventListener('click', () => {});
+
+filterBlack.addEventListener('click', () => {});
+
+filterHispanic.addEventListener('click', () => {});
+
+filterAsian.addEventListener('click', () => {});
