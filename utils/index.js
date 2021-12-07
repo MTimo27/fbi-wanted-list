@@ -107,21 +107,63 @@ filterButton.addEventListener('click', () => {
   }
 });
 
+//DE SCHIMBAT INTR O VARIANTA MAI PUTIN REDUNDANTA
+//DE AVUT OPTIUNEA SA PUI MAI MULT FILTRE IN ACELASI TIMP
+
 filterMale.addEventListener('click', () => {
   sex = 'male';
   nr = 1;
   wrapper.innerHTML = '';
   filterWrapper.style.display = 'none';
-  filterText.textContent = 'FILTERED BY SEX: MALES';
+  filterText.textContent = `FILTERED BY SEX: ${sex}`;
   displayData(nr);
 });
 
-filterFemale.addEventListener('click', () => {});
+filterFemale.addEventListener('click', () => {
+  sex = 'female';
+  nr = 1;
+  wrapper.innerHTML = '';
+  filterWrapper.style.display = 'none';
+  filterText.textContent = `FILTERED BY SEX: ${sex}`;
+  displayData(nr);
+});
 
-filterWhite.addEventListener('click', () => {});
+filterWhite.addEventListener('click', () => {
+  sex = '';
+  race = 'white';
+  nr = 1;
+  wrapper.innerHTML = '';
+  filterWrapper.style.display = 'none';
+  filterText.textContent = `FILTERED BY RACE: ${race}`;
+  displayData(nr);
+});
 
-filterBlack.addEventListener('click', () => {});
+filterBlack.addEventListener('click', () => {
+  sex = '';
+  race = 'black';
+  nr = 1;
+  wrapper.innerHTML = '';
+  filterWrapper.style.display = 'none';
+  filterText.textContent = `FILTERED BY RACE: ${race}`;
+  displayData(nr);
+});
 
-filterHispanic.addEventListener('click', () => {});
+filterHispanic.addEventListener('click', () => {
+  sex = '';
+  race = 'hispanic';
+  nr = 1;
+  wrapper.innerHTML = '';
+  filterWrapper.style.display = 'none';
+  filterText.textContent = `FILTERED BY RACE: ${race}`;
+  displayData(nr);
+});
 
-filterAsian.addEventListener('click', () => {});
+filterAsian.addEventListener('click', () => {
+  sex = '';
+  race = 'asian';
+  nr = 1;
+  wrapper.innerHTML = '';
+  filterWrapper.style.display = 'none';
+  filterText.textContent = `FILTERED BY RACE: ${race}`;
+  displayData(nr);
+});

@@ -145,6 +145,12 @@ FILTER
   margin-top: 0.25rem;
 }
 
+.filterText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 /*---
 CARDS
 ---*/
