@@ -7,18 +7,22 @@ let nr = 1;
 let totalPages;
 let ok;
 
-const createElements = (imgSrc, name) => {
+const createElements = (imgSrc, name, pdfLink) => {
   wrapper.innerHTML += `
-        <div class="card">
+      <div class="card">
+        <a href=${pdfLink} target="_blank">
           <div class="cardImg">
             <img class="img" src="${
               imgSrc ? imgSrc : 'Image not available'
             }" />
           </div>
           <div class="cardText">
-            <h1 class="cardName">${name}</h1>
+            <h1 class="cardName">${
+              name ? name : 'Name not available'
+            }</h1>
           </div>
-        </div>
+        </a>
+      </div>
   `;
 };
 
@@ -38,16 +42,15 @@ const getData = async (pageNr) => {
 const displayData = async (pageNr) => {
   try {
     let data = await getData(pageNr);
-
+    console.log(data);
     totalPages = await data.total;
     paginationP.textContent = `You are on page ${pageNr} out of ${totalPages}.`;
 
     for (let obj of data.items) {
       createElements(
         await obj.images[0].thumb,
-        await obj.title
-        // await obj.description,
-        // await obj.caution
+        await obj.title,
+        await obj.files[0].url
       );
     }
   } catch (err) {
