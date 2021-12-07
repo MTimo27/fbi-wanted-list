@@ -16,6 +16,8 @@ const filterHispanic = document.getElementById(
 );
 const filterAsian = document.getElementById('filterAsian');
 const filterText = document.getElementById('filterText');
+const filterDelete =
+  document.getElementById('filterDelete');
 
 let nr = 1,
   totalPages,
@@ -165,5 +167,15 @@ filterAsian.addEventListener('click', () => {
   wrapper.innerHTML = '';
   filterWrapper.style.display = 'none';
   filterText.textContent = `FILTERED BY RACE: ${race}`;
+  displayData(nr);
+});
+
+filterDelete.addEventListener('click', () => {
+  sex = '';
+  race = '';
+  nr = 1;
+  wrapper.innerHTML = '';
+  filterWrapper.style.display = 'none';
+  filterText.textContent = ``;
   displayData(nr);
 });
