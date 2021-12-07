@@ -1,0 +1,10 @@
+     <h2 class="cardWanted" style="display:${
+              ok ? 'none' : 'block'
+            }">${
+    wantedText ? wantedText : 'Wanted motives not provided'
+  }</h2>
+            <p class="cardDesc" style="display:${
+              ok ? 'none' : 'block'
+            }>${
+    descText ? descText : 'Description not provided'
+  }</p>

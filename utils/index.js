@@ -7,12 +7,7 @@ let nr = 1;
 let totalPages;
 let ok;
 
-const createElements = (
-  imgSrc,
-  name,
-  wantedText,
-  descText
-) => {
+const createElements = (imgSrc, name) => {
   wrapper.innerHTML += `
         <div class="card">
           <div class="cardImg">
@@ -22,16 +17,6 @@ const createElements = (
           </div>
           <div class="cardText">
             <h1 class="cardName">${name}</h1>
-            <h2 class="cardWanted" style="display:${
-              ok ? 'none' : 'block'
-            }">${
-    wantedText ? wantedText : 'Wanted motives not provided'
-  }</h2>
-            <p class="cardDesc" style="display:${
-              ok ? 'none' : 'block'
-            }>${
-    descText ? descText : 'Description not provided'
-  }</p>
           </div>
         </div>
   `;
@@ -55,14 +40,14 @@ const displayData = async (pageNr) => {
     let data = await getData(pageNr);
 
     totalPages = await data.total;
-    paginationP.textContent = `You are on page ${pageNr} out of ${totalPages} `;
+    paginationP.textContent = `You are on page ${pageNr} out of ${totalPages}.`;
 
     for (let obj of data.items) {
       createElements(
         await obj.images[0].thumb,
-        await obj.title,
-        await obj.description,
-        await obj.caution
+        await obj.title
+        // await obj.description,
+        // await obj.caution
       );
     }
   } catch (err) {
